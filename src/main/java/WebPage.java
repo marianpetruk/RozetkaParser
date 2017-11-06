@@ -14,7 +14,6 @@ public class WebPage {
     public WebPage(String url) throws IOException {
         this.url = url;
         this.content = getWebpageContent();
-
     }
 
     Document getWebpageContent() throws IOException {
@@ -54,8 +53,6 @@ public class WebPage {
     List<String> parse_comments() {
 
             Elements items = this.content.select("article");
-            //items.select("");
-            //System.out.println(items.size());
             List<String> comments = new ArrayList<String>();
 
             for (Element el : items) {
@@ -64,13 +61,11 @@ public class WebPage {
                 String comment = el.getElementsByClass("pp-review-text-i").first().text();
                 if (mark.length() > 0) {
                     comments.add(mark + ',' + comment);
-                    //System.out.println(mark+','+comment);
                 }
                 }catch (Exception exp){
                     int k=0;
                 }
             }
-            //System.out.println(comments.size());
             return comments;
 
     }
